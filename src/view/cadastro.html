@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sistema de Eventos Escolares</title>
+    <link rel="stylesheet" href="./estilo/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="register-card">
+            <div class="header">
+                <h1>Criar Conta</h1>
+                <p>Junte-se ao nosso sistema de eventos</p>
+            </div>
+            
+            <form id="registerForm" class="form">
+                <div class="input-group">
+                    <input type="text" id="name" name="name" placeholder="Nome completo" required>
+                    <span class="input-icon">👤</span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <span class="input-icon">📧</span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Senha (mín. 6 caracteres)" required minlength="6">
+                    <span class="input-icon">🔒</span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar senha" required>
+                    <span class="input-icon">🔓</span>
+                </div>
+                
+                <div class="password-strength">
+                    <div class="strength-meter">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <span class="strength-text" id="strengthText">Digite uma senha</span>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                    <label for="acceptTerms">Aceito os <a href="#" class="link">termos de uso</a> e <a href="#" class="link">política de privacidade</a></label>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="registerBtn">
+                    <span class="btn-text">Criar Conta</span>
+                    <span class="btn-loading" style="display: none;">Criando...</span>
+                </button>
+                
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+                
+                <a href="login.html" class="btn-secondary">Já tenho uma conta</a>
+            </form>
+            
+            <div id="message" class="message" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="./script/cadastroScript.js"></script>
+</body>
+</html>

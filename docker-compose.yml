@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:15
+    container_name: meu_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Opaiehfoda
+      POSTGRES_DB: gerenciador-eventos
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

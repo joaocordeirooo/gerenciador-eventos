@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Eventos - Sistema Escolar</title>
+    <link rel="stylesheet" href="./estilo/usuariodash.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>📚 Sistema de Eventos</h2>
+        </div>
+        <div class="nav-user">
+            <span class="welcome">Olá, <span id="userName">Usuário</span>!</span>
+            <button class="btn-logout" id="logoutBtn">Sair</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Meus Eventos</h1>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEvents">0</div>
+                    <div class="stat-label">Eventos Disponíveis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="myRegistrations">0</div>
+                    <div class="stat-label">Minhas Inscrições</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="available">Eventos Disponíveis</button>
+            <button class="tab-btn" data-tab="registered">Minhas Inscrições</button>
+        </div>
+
+        <!-- Eventos Disponíveis -->
+        <div class="tab-content active" id="available-tab">
+            <div class="search-box">
+                <input type="text" id="searchEvents" placeholder="Buscar eventos..." />
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="events-grid" id="availableEvents">
+                <div class="loading-spinner">Carregando eventos...</div>
+            </div>
+        </div>
+
+        <!-- Minhas Inscrições -->
+        <div class="tab-content" id="registered-tab">
+            <div class="events-grid" id="registeredEvents">
+                <div class="loading-spinner">Carregando inscrições...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Inscrição</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Deseja se inscrever no evento:</p>
+                <h4 id="eventTitle"></h4>
+                <div class="event-details">
+                    <p><strong>Data:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Local:</strong> <span id="eventLocation"></span></p>
+                    <p><strong>Descrição:</strong> <span id="eventDescription"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelBtn">Cancelar</button>
+                <button class="btn-primary" id="confirmBtn">Confirmar Inscrição</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de Notificação -->
+    <div class="toast" id="toast">
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="./script/usuarioScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Eventos Escolares</title>
+    <link rel="stylesheet" href="../view/estilo/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="header">
+                <h1>Sistema de Eventos</h1>
+                <p>Entre na sua conta</p>
+            </div>
+            
+            <form id="loginForm" class="form">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                    <span class="input-icon">📧</span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                    <span class="input-icon">🔒</span>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Lembrar-me</label>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="loginBtn">
+                    <span class="btn-text">Entrar</span>
+                    <span class="btn-loading" style="display: none;">Entrando...</span>
+                </button>
+                
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+                
+                <a href="cadastro.html" class="btn-secondary">Criar nova conta</a>
+            </form>
+            
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="./script/loginScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Sistema de Eventos</title>
+    <link rel="stylesheet" href="./estilo/admDash.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>🛡️ Painel Administrativo</h2>
+        </div>
+        <div class="nav-user">
+            <span class="welcome">Admin: <span id="adminName">Administrador</span></span>
+            <button class="btn-logout" id="logoutBtn">Sair</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Gerenciamento de Eventos</h1>
+            <div class="stats">
+                <div class="stat-card primary">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="totalEvents">0</div>
+                        <div class="stat-label">Total de Eventos</div>
+                    </div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="totalUsers">0</div>
+                        <div class="stat-label">Usuários Cadastrados</div>
+                    </div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="totalRegistrations">0</div>
+                        <div class="stat-label">Total de Inscrições</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="events">Eventos</button>
+            <button class="tab-btn" data-tab="registrations">Inscrições</button>
+            <button class="tab-btn" data-tab="users">Usuários</button>
+        </div>
+
+        <!-- Aba de Eventos -->
+        <div class="tab-content active" id="events-tab">
+            <div class="section-header">
+                <h2>Gerenciar Eventos</h2>
+                <button class="btn-primary" id="newEventBtn">
+                    <span class="btn-icon">➕</span>
+                    Novo Evento
+                </button>
+            </div>
+            
+            <div class="events-list" id="eventsList">
+                <div class="loading-spinner">Carregando eventos...</div>
+            </div>
+        </div>
+
+        <!-- Aba de Inscrições -->
+        <div class="tab-content" id="registrations-tab">
+            <div class="section-header">
+                <h2>Inscrições por Evento</h2>
+                <select id="eventFilter" class="event-filter">
+                    <option value="">Todos os eventos</option>
+                </select>
+            </div>
+            
+            <div class="registrations-list" id="registrationsList">
+                <div class="loading-spinner">Carregando inscrições...</div>
+            </div>
+        </div>
+
+        <!-- Aba de Usuários -->
+        <div class="tab-content" id="users-tab">
+            <div class="section-header">
+                <h2>Usuários do Sistema</h2>
+                <div class="search-box">
+                    <input type="text" id="searchUsers" placeholder="Buscar usuários..." />
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+            
+            <div class="users-list" id="usersList">
+                <div class="loading-spinner">Carregando usuários...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Evento -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Novo Evento</h3>
+                <button class="modal-close" id="closeEventModal">&times;</button>
+            </div>
+            <form id="eventForm" class="modal-body">
+                <div class="input-group">
+                    <label for="eventName">Nome do Evento</label>
+                    <input type="text" id="eventName" name="name" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="eventDate">Data do Evento</label>
+                    <input type="datetime-local" id="eventDate" name="date" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="eventLocation">Local</label>
+                    <input type="text" id="eventLocation" name="location" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="eventDescription">Descrição</label>
+                    <textarea id="eventDescription" name="description" rows="4" required></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="cancelEventBtn">Cancelar</button>
+                <button type="submit" form="eventForm" class="btn-primary" id="saveEventBtn">
+                    <span class="btn-text">Salvar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header danger">
+                <h3>Confirmar Exclusão</h3>
+                <button class="modal-close" id="closeDeleteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir este evento?</p>
+                <div class="warning-box">
+                    <strong>⚠️ Atenção:</strong> Esta ação não pode ser desfeita. 
+                    Todas as inscrições relacionadas também serão removidas.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelDeleteBtn">Cancelar</button>
+                <button class="btn-danger" id="confirmDeleteBtn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de Notificação -->
+    <div class="toast" id="toast">
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="./script/admScript.js"></script>
+</body>
+</html>
