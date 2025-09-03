@@ -73,7 +73,7 @@ async function loadEvents() {
 
 async function loadUsers() {
     try {
-        // Ajuste conforme sua rota real de admin
+        // rota antiga
         // const response = await fetch('http://localhost:3002/usuarios/admin/users', { headers: getAuthHeaders() });
 
         // Se não tiver rota admin, apenas retorna array vazio
